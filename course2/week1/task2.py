@@ -32,11 +32,9 @@ def linear_prediction(x, w):
 
 
 def stochastic_gradient_step(x, y, w, train_ind, eta=0.01):
-    arr = linear_prediction(x[train_ind], w) - y[train_ind]
+    pred = linear_prediction(x[train_ind], w) - y[train_ind]
     l = len(x)
-
-    grad = [el * arr for el in x[train_ind]]
-
+    grad = [el * pred for el in x[train_ind]]
     return w - 2 * eta / l * np.array(grad)
 
 
